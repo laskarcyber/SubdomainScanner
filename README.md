@@ -1,6 +1,7 @@
 # Subdomain Scanner
+#### Intended to be run via CLI
 
-## Usage
+### Usage
 1: Include the class into your script:
 ```php
 <?php

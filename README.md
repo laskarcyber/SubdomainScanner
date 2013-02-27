@@ -2,14 +2,14 @@
 
 ## Usage
 1: Include the class into your script:
-```
+```php
 <?php
 require 'class.subdomainscanner.php';
 ?>
 ```
 
 2: Make a new instance of the class:
-```
+```php
 <?php
 require 'class.subdomainscanner.php';
 try {
@@ -21,7 +21,7 @@ try {
 ```
 
 3: Set the list and start the scan:
-```
+```php
 <?php
 require 'class.subdomainscanner.php';
 try {
@@ -35,4 +35,5 @@ try {
 ```
 
 4: ???
+
 5: MAGIC

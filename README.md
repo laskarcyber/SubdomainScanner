@@ -43,5 +43,7 @@ __5:__ ***MAGIC***
 
 #### Permutation vs list
 Like others, this script has the ability to make a permutative pattern (a, b .. aa, ab, ac etc...)
+
 While using a word list may be more efficient (less requests, less bandwidth, less everything, faster), sometimes a permutative pattern may be ideal if you don't have any idea what you're looking for.
+
 Beware, permutation is **SLOW**.

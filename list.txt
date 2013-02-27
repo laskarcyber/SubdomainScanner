@@ -1,0 +1,9 @@
+mail
+translate
+ftp
+maps
+images
+news
+books
+docs
+video

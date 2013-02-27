@@ -1,15 +1,17 @@
 # Subdomain Scanner
-#### Intended to be run via CLI
+> This application is intended to be run via CLI using the command "php run.php"
+>
+> list.txt may need to be chmodded to 755 (Non-Winblows users)
 
-### Usage
-1: Include the class into your script:
+#### Usage
+__1:__ Include the class into your script:
 ```php
 <?php
 require 'class.subdomainscanner.php';
 ?>
 ```
 
-2: Make a new instance of the class:
+__2:__ Make a new instance of the class:
 ```php
 <?php
 require 'class.subdomainscanner.php';
@@ -21,7 +23,7 @@ try {
 ?>
 ```
 
-3: Set the list and start the scan:
+__3:__ Set the list and start the scan:
 ```php
 <?php
 require 'class.subdomainscanner.php';
@@ -35,6 +37,6 @@ try {
 ?>
 ```
 
-4: ???
+__4:__ ???
 
-5: MAGIC
+__5:__ ***MAGIC***

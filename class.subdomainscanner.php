@@ -86,11 +86,12 @@ class SubdomainScanner {
 				}
 			} else {
 				$domainsFound = array();
-
-				for($i = 1; $i < 64; $i++) {
-					$this->recurseString($i, 0, "");
-					$str = $this->currentString;
-
+				$num = 0;
+				
+				while(true) {
+					$str = base_convert($num, 10, 36);
+					$num++;
+					
 					$ch = curl_init($this->domainInfo['scheme'] . '://' . $str . '.' . $this->domain);
 					curl_setopt_array($ch, array(
 						CURLOPT_RETURNTRANSFER => true,
@@ -116,16 +117,6 @@ class SubdomainScanner {
 				}
 			}
 		}
-	}
-
-	private function recurseString($x, $y, $str) {
-		for($i = 0; $i < $this->charset['strlen']; $i++) {
-			if($y < $x - 1) {
-				$this->recurseString($x, $y + 1, $str . $this->charset['charset'][$i]);
-			}
-			$this->currentString = $str . $this->charset['charset'][$i];
-		}
-		//return $str . $this->charset['charset'][$i];
 	}
 
 	public function setDomain($domain) {

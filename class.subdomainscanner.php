@@ -2,7 +2,7 @@
 namespace PUTS\SubdomainScanner;
 
 class SubdomainScanner {
-  protected $domain = null;
+	protected $domain = null;
 
 	protected $mh = null;
 	protected $ch = array();
@@ -48,22 +48,31 @@ class SubdomainScanner {
 				curl_multi_exec($this->mh, $running);
 			} while($running > 0);
 
-			$domainsFound = 0;
+			$domainsFound = array();
 			foreach($this->ch as $key => $handler) {
 				if(curl_errno($handler) == 0) {
 					if(curl_getinfo($handler, CURLINFO_HTTP_CODE) == 200) {
 						echo 'Domain found: ' . $this->list[$key] . PHP_EOL;
-						$domainsFound++;
+						$domainsFound[] = $this->list[$key];
 					}
 				}
 			}
 
-			if($domainsFound == 0) {
+			$domainsFoundCount = count($domainsFound);
+			if($domainsFoundCount == 0) {
 				echo 'No domains were found.' . PHP_EOL;
-			} else if($domainsFound == 1) {
+			} else if($domainsFoundCount == 1) {
 				echo '1 domain was found.' . PHP_EOL;
-			} else if($domainsFound > 1) {
-				echo $domainsFound . ' domains found.' . PHP_EOL;
+			} else if($domainsFoundCount > 1) {
+				echo $domainsFoundCount . ' domains found.' . PHP_EOL;
+			}
+
+			$newFile = implode(PHP_EOL, $domainsFound);
+			$saveFile = strtolower(trim(fgets(STDIN)));
+			if(substr($saveFile, 0, 1) == 'y') {
+				file_put_contents('domains-found-' . $this->domain . '-'.time().'.txt', $newFile);
+			} else {
+				echo 'Ok.' . PHP_EOL;
 			}
 		}
 	}
@@ -101,12 +110,5 @@ class SubdomainScanner {
 	public function getList() {
 		return $this->list;
 	}
-}
-
-try {
-	$scanner = new SubdomainScanner('http://google.ca', 'list.txt');
-	$scanner->startScan();
-} catch(\Exception $e) {
-	echo $e->getMessage() . PHP_EOL;
 }
 ?>

@@ -44,6 +44,21 @@ __5:__ ***MAGIC***
 #### Permutation vs list
 Like others, this script has the ability to make a permutative pattern (a, b .. aa, ab, ac etc...)
 
+It may be enabled or disabled by using the setPermutation method:
+
+```php
+<?php
+require 'class.subdomainscanner.php';
+try {
+  $scanner = new SubdomainScanner('http://google.ca'); // This will start a new scanner on the domain "google.ca"
+  $scanner->setPermutation(true);
+  $scanner->startScan(); // start the scan
+} catch(Exception $e) { // catch any exceptions.
+  echo $e->getMessage() . PHP_EOL;
+}
+?>
+```
+
 While using a word list may be more efficient (less requests, less bandwidth, less everything, faster), sometimes a permutative pattern may be ideal if you don't have any idea what you're looking for.
 
 Beware, permutation is **SLOW**.
